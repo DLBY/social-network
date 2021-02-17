@@ -21,6 +21,7 @@ export const receiveRegister = (response) => ({
   isFetching: false,
   isAuthenticated: true,
   id_token: response.jwt,
+  user: response.user,
 });
 
 export const registerError = (message) => ({
