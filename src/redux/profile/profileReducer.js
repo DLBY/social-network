@@ -1,27 +1,27 @@
 import Cookies from 'js-cookie';
 import {
-  REGISTER_REQUEST,
-  REGISTER_SUCCESS,
-  REGISTER_FAILURE,
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGIN_FAILURE,
-  LOGOUT_SUCCESS,
-} from './authTypes';
+  PROFILE_REQUEST,
+  PROFILE_SUCCESS,
+  PROFILE_FAILURE,
+  EDIT_PROFILE_REQUEST,
+  EDIT_PROFILE_SUCCESS,
+  EDIT_PROFILE_FAILURE,
+} from './profileTypes';
 
 const initialState = {
   isFetching: false,
   isAuthenticated: !!Cookies.get('id_token'), // ternaire
+  user: {},
 };
-const authReducer = (state = initialState, action) => {
+const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case REGISTER_REQUEST:
+    case PROFILE_REQUEST:
       return {
         ...state,
         isFetching: true,
         isAuthenticated: false,
       };
-    case REGISTER_SUCCESS:
+    case PROFILE_SUCCESS:
       return {
         ...state,
         isFetching: false,
@@ -29,20 +29,20 @@ const authReducer = (state = initialState, action) => {
         errorMessage: '',
         user: action.user,
       };
-    case REGISTER_FAILURE:
+    case PROFILE_FAILURE:
       return {
         ...state,
         isFetching: false,
         isAuthenticated: false,
         errorMessage: action.message,
       };
-    case LOGIN_REQUEST:
+    case EDIT_PROFILE_REQUEST:
       return {
         ...state,
         isFetching: true,
         isAuthenticated: false,
       };
-    case LOGIN_SUCCESS:
+    case EDIT_PROFILE_SUCCESS:
       return {
         ...state,
         isFetching: false,
@@ -50,24 +50,16 @@ const authReducer = (state = initialState, action) => {
         errorMessage: '',
         user: action.user,
       };
-    case LOGIN_FAILURE:
+    case EDIT_PROFILE_FAILURE:
       return {
         ...state,
         isFetching: false,
         isAuthenticated: false,
         errorMessage: action.message,
-      };
-    case LOGOUT_SUCCESS:
-      Cookies.remove('id_token');
-      return {
-        ...state,
-        isFetching: true,
-        isAuthenticated: false,
-        user: undefined,
       };
     default:
       return state;
   }
 };
 
-export default authReducer;
+export default profileReducer;

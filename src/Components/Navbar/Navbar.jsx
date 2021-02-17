@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../redux';
 
@@ -7,9 +7,16 @@ const Navbar = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
 
+  const history = useHistory();
+
+  const signOut = () => {
+    dispatch(logout());
+    history.push('/');
+  };
+
   return (
     <nav className="navbar">
-      <Link to="/social_network" className="logo">
+      <Link to="/" className="logo">
         Social Network
       </Link>
 
@@ -27,11 +34,13 @@ const Navbar = () => {
             <Link to="/login">Login</Link>
           </li>
         )}
-        <li>
-          <Link to="/profile">Profile</Link>
-        </li>
         {isAuthenticated && (
-          <button type="button" onClick={() => dispatch(logout())}>
+          <li>
+            <Link to="/profile">Profile</Link>
+          </li>
+        )}
+        {isAuthenticated && (
+          <button type="button" onClick={signOut}>
             Logout
           </button>
         )}

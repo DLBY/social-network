@@ -5,9 +5,6 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  PROFILE_REQUEST,
-  PROFILE_SUCCESS,
-  PROFILE_FAILURE,
   LOGOUT_SUCCESS,
 } from './authTypes';
 
@@ -19,11 +16,11 @@ export const requestRegister = (creds) => ({
   creds,
 });
 
-export const receiveRegister = (user) => ({
+export const receiveRegister = (response) => ({
   type: REGISTER_SUCCESS,
   isFetching: false,
   isAuthenticated: true,
-  id_token: user.jwt,
+  id_token: response.jwt,
 });
 
 export const registerError = (message) => ({
