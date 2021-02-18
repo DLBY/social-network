@@ -287,3 +287,34 @@ h2 {
     color: white;
   }
 }
+
+.profile-edit-form form {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  input {
+    color:white;
+    padding-top:5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 2em;
+    margin-bottom: 2em;
+    background-color: $gray;
+    border: none;
+    border-radius: 20px;
+    padding-top:5px;
+    font-size: 18px;
+    &:focus {
+      outline: none;
+    }
+    input::placeholder {
+      padding-top:5px;
+      padding-left:5px;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-size: 22px;
+      color: white;
+    }
+  }
+}
+.btn-primary {
+  @extend .profile-btn;
+}
