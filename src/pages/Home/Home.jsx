@@ -30,19 +30,31 @@ const Home = () => {
   return (
     <section className="section-home">
       <nav className="horizontal-navbar">
-        <Link to="/">Home</Link>
+        <span className="home">
+          <Link to="/">Home</Link>
+        </span>
       </nav>
       <div className="form-post-container">
-        <h2>
+        {/* <h2>
           Welcome on My Social Network. This website is a training to Redux and
           React. We use auth and routing to create a small social media website.
-        </h2>
+        </h2> */}
         {isAuthenticated && (
-          <form onSubmit={(e) => handleSubmitPost(e)} className="inputPost">
-            <input type="text" name="postContent" />
-            <button type="submit" className="btn-submit" value="Save">
-              Send
-            </button>
+          <form onSubmit={(e) => handleSubmitPost(e)} className="formPost">
+            <textarea
+              type="text"
+              name="postContent"
+              placeholder="What's happening?"
+            />
+            <div className="post-bot">
+              <button
+                type="submit"
+                className="btn-submit-post btn-send"
+                value="Save"
+              >
+                Send
+              </button>
+            </div>
           </form>
         )}
       </div>

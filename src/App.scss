@@ -31,9 +31,6 @@ body {
     width: 60%;
     height: 3em;
     text-align: center;
-    .home {
-      margin-left: 1em;
-    }
   }
   .app {
     display:flex;
@@ -78,6 +75,7 @@ body {
       }
     }
     main {
+      min-height: 100vh;
       border-right: 1px solid $gray;
       padding-top:3em;
       margin-left:30%;
@@ -96,8 +94,8 @@ body {
         cursor: pointer;
         background-color:lighten($dark, 5%)
       }
-      .iconLike {
-        fill:red;
+      .iconLike:hover {
+        fill:	#FF0000;
       }
     }
     .alias {
@@ -109,10 +107,14 @@ body {
 
   }
 }
+.home {
+  margin-left: 1em;
+}
 .break {
   border-bottom: 1px solid $gray;
   border-top: 1px solid $gray;
   height: 10px;
+  width: 100%;
   background-color: $secondary;
 }
 
@@ -195,5 +197,93 @@ body {
   min-height: 39px;
   padding-right: 1em;
   padding-left: 1em;
+  }
+}
+
+// PROFILE
+h2 {
+  margin:0;
+}
+.profile-section {
+  min-width:100%;
+  .profile-top {
+    display: flex;
+    flex-direction: column;
+    margin-left:2em;
+    align-items: start;
+  }
+  .profile-bot {
+    @extend .post-bot;
+  }
+  .profile-btn {
+    @extend .btn;
+    background-color:transparent;
+    border:1px solid $primary;
+    color:$primary;
+    margin-left: 2em;
+    &:hover {
+      color:white;
+      background-color:$primary;
+    }
+  }
+}
+.section-home {
+  min-width:100%;
+}
+.section-otherprofil {
+  @extend .profile-section;
+}
+
+.like-bot {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.section-top {
+  display:flex;
+  align-items: center;
+  position:fixed;
+  background-color:$dark;
+  border-bottom: 1px solid $gray;
+  z-index:0;
+  top:0;
+  width: 60%;
+  height: 3em;
+  text-align: center;
+}
+.register-container {
+}
+.form-register-container {
+  margin: 5em 2em;
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  input {
+    color:white;
+    padding-top:5px;
+    padding-left:10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 3em;
+    margin-bottom: 2em;
+    background-color: $gray;
+    border: none;
+    border-radius: 20px;
+    padding-top:5px;
+    padding-left:10px;
+    font-size: 22px;
+    &:focus {
+      outline: none;
+    }
+  }
+  input::placeholder {
+    padding-top:5px;
+    padding-left:5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 22px;
+    color: white;
   }
 }

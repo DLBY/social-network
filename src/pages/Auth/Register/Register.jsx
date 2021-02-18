@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../../redux';
 
@@ -19,18 +19,27 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <h1>Hello im Register</h1>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <input type="text" placeholder="Name" />
-        <input type="email" placeholder="Email" autoComplete="email" />
-        <input
-          type="Password"
-          placeholder="password"
-          autoComplete="current-password"
-        />
-        <input type="submit" className="btn-submit" value="Register" />
-      </form>
+    <div className="register-container">
+      <div className="section-top">
+        <Link to="/register">
+          <span className="home" />
+          Register
+        </Link>
+      </div>
+      <div className="form-register-container">
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <input type="text" placeholder="Username" />
+          <input type="email" placeholder="Email" autoComplete="email" />
+          <input
+            type="Password"
+            placeholder="password"
+            autoComplete="current-password"
+          />
+          <button type="submit" className="btn-submit btn" value="Register">
+            Register
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

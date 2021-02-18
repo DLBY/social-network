@@ -20,9 +20,12 @@ const OtherProfile = () => {
   }, [token, dispatch, userId]);
   return (
     <section className="section-otherprofil">
-      <h3> Welcome on {username}&apos;s Profile</h3>
-      <h4>Username :{username}</h4>
-      <h4>Description :{description}</h4>
+      <div className="profile-top">
+        <h1> {username}&apos;s profile</h1>
+        <h4>Username :{username}</h4>
+        <h4>Description :{description}</h4>
+      </div>
+      <hr />
       {otherUserPosts &&
         otherUserPosts.map((post) => (
           <OtherPost create={post.created_at} text={post.text} />
