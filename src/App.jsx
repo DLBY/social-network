@@ -2,8 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider, useSelector } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import './App.scss';
 import { persistor, store } from './redux/store';
 import Navbar from './Components/Navbar/Navbar';
+import HorizontalNav from './Components/Navbar/HorizontalNav';
 import Login from './pages/Auth/Login/Login';
 import Register from './pages/Auth/Register/Register';
 import Home from './pages/Home/Home';
@@ -12,10 +14,10 @@ import { PrivateRoutes, PublicRoutes } from './Components/Routes/PrivateRoutes';
 import OtherProfile from './pages/Profile/OtherProfile';
 
 const App = () => (
-  // const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <Router>
+        <HorizontalNav />
         <div className="app">
           <Navbar />
           <main>

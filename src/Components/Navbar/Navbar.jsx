@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../redux';
+import homeIcon from '../../assets/image/Budgie.svg';
 
 const Navbar = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -17,7 +18,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <Link to="/" className="logo">
-        Social Network
+        <img src={homeIcon} alt="Home icon" />
       </Link>
 
       <ul className="navigation">

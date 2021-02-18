@@ -5,6 +5,9 @@ import {
   GET_ALL_POST_REQUEST,
   GET_ALL_POST_SUCCESS,
   GET_ALL_POST_FAILURE,
+  GET_USER_POST_FAILURE,
+  GET_USER_POST_SUCCESS,
+  GET_USER_POST_REQUEST,
 } from './postTypes';
 
 export const requestNewPost = () => ({
@@ -37,6 +40,23 @@ export const receiveAllPost = (response) => ({
 
 export const getAllPostError = (message) => ({
   type: GET_ALL_POST_FAILURE,
+  isFetching: false,
+  message,
+});
+
+export const requestGetUserPost = () => ({
+  type: GET_USER_POST_REQUEST,
+  isFetching: true,
+});
+
+export const receiveGetUserPost = (response) => ({
+  type: GET_USER_POST_SUCCESS,
+  isFetching: false,
+  userPosts: response,
+});
+
+export const getUserPostError = (message) => ({
+  type: GET_USER_POST_FAILURE,
   isFetching: false,
   message,
 });

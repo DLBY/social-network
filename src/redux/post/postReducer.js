@@ -5,6 +5,9 @@ import {
   GET_ALL_POST_REQUEST,
   GET_ALL_POST_SUCCESS,
   GET_ALL_POST_FAILURE,
+  GET_USER_POST_FAILURE,
+  GET_USER_POST_SUCCESS,
+  GET_USER_POST_REQUEST,
 } from './postTypes';
 
 const initialState = {
@@ -45,6 +48,25 @@ const postReducer = (state = initialState, action) => {
         posts: action.allPosts,
       };
     case GET_ALL_POST_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        isAuthenticated: false,
+        errorMessage: action.message,
+      };
+    case GET_USER_POST_REQUEST:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case GET_USER_POST_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: '',
+        otherUserPosts: action.userPosts,
+      };
+    case GET_USER_POST_FAILURE:
       return {
         ...state,
         isFetching: false,

@@ -7,6 +7,9 @@ import {
   requestAllPost,
   getAllPostError,
   receiveAllPost,
+  requestGetUserPost,
+  receiveGetUserPost,
+  getUserPostError,
 } from './postActions';
 
 export const getAllPost = () => (dispatch) => {
@@ -57,6 +60,29 @@ export const newPost = (userData) => (dispatch) => {
       } else {
         dispatch(receiveNewPost(response));
         dispatch(getAllPost());
+      }
+    });
+};
+
+export const getUserPost = (token, id) => (dispatch) => {
+  const config = {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(),
+  };
+
+  dispatch(requestGetUserPost());
+  fetch(`http://localhost:1337/posts?user.id=${id}`, config)
+    .then((response) => response.json())
+    .then((response) => {
+      if (response.statusCode) {
+        dispatch(getUserPostError(response.message));
+      } else {
+        dispatch(receiveGetUserPost(response));
+        console.log('response:', response);
       }
     });
 };
