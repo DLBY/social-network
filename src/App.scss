@@ -7,7 +7,13 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  p {
+    font-size:$paraph;
+    line-height: $height;
+  }
   a {
+    font-size: $subtitle;
+    font-weight:700;
     text-decoration: none;
     color:$white;
   }
@@ -15,6 +21,8 @@ body {
     list-style-type: none;
   }
   .horizontal-navbar {
+    display:flex;
+    align-items: center;
     position:fixed;
     background-color:$dark;
     border-bottom: 1px solid $gray;
@@ -23,11 +31,18 @@ body {
     width: 60%;
     height: 3em;
     text-align: center;
+    .home {
+      margin-left: 1em;
+    }
   }
   .app {
     display:flex;
     z-index: 2;
     .navbar {
+      display:flex;
+      flex-direction: column;
+      align-items:center;
+      vertical-align: center;
       background-color:$dark;
       position: fixed;
       border-right: 1px solid $gray;
@@ -35,6 +50,32 @@ body {
       left: 0;
       height:100%;
       width: 30%;
+      .navigation {
+        text-align: center;
+        padding:0;
+        overflow-wrap: break-word;
+      }
+      .logo {
+        margin-top:3em;
+      }
+      li {
+        padding-bottom: 7px;
+        padding-top: 7px;
+        a {
+          &:hover {
+            background-color:darken($primary, 30%);
+            padding-right: 30px;
+            padding-left: 30px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 9999px;
+            color:$primary;
+          }
+          &:focus {
+            color:$primary;
+          }
+        }
+      }
     }
     main {
       border-right: 1px solid $gray;
@@ -44,9 +85,28 @@ body {
       width: 60%;
     }
     .post {
+      .post-margin {
+        padding-top: 10px;
+        flex-basis: 0px;
+        flex-grow: 1;
+      }
       padding:0 1em;
       border-bottom: 1px solid $gray;
+      &:hover {
+        cursor: pointer;
+        background-color:lighten($dark, 5%)
+      }
+      .iconLike {
+        fill:red;
+      }
     }
+    .alias {
+      color:$disabled;
+      height:$height;
+      font-size: 19px;
+      font-weight: 400;
+    }
+
   }
 }
 .break {
@@ -56,6 +116,37 @@ body {
   background-color: $secondary;
 }
 
+.formPost {
+  margin-top:10px;
+  display:flex;
+  flex-direction: column;
+  padding-top:5px;
+  padding-bottom:5px;
+  textarea {
+    padding-top:5px;
+    padding-left:10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 22px;
+    color:white;
+    font-weight: 400;
+    border:none;
+    background-color:$dark;
+    resize:none;
+    &:focus {
+      outline: none;
+    }
+  }
+  textarea::placeholder {
+    padding-top:5px;
+    padding-left:5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 22px;
+    color:gray;
+  }
+  .btn-submit-post {
+    margin-top:10px;
+  }
+}
 .rightAside {
   width:10%;
   z-index:3;
@@ -72,5 +163,37 @@ body {
     width: 20px;
     object-fit:contain;
     margin-left: 0.5em;
+  }
+}
+.btn {
+  font-size: $paraph;
+  margin-top:7px;
+  min-height: 39px;
+  cursor: pointer;
+  background-color:$primary;
+  border: none;
+  border-radius: 9999px;
+  color:white;
+  font-weight: bold;
+  padding-right: 30px;
+  padding-left: 30px;
+  &:hover {
+    transition-duration: 0.2s;
+    transition-property:background-color, box-shadow;
+    box-shadow: (0 0 0 / 8%) 0px 8px 28px;
+    background-color:darken($primary,5%)
+  }
+}
+
+.post-bot {
+  display:flex;
+  justify-content:flex-end;
+  margin-right: 1em;
+  margin-bottom: 0.5em;
+.btn-send {
+  @extend .btn;
+  min-height: 39px;
+  padding-right: 1em;
+  padding-left: 1em;
   }
 }
