@@ -46,6 +46,7 @@ const Home = () => {
             <Post
               username={post.user.username}
               text={post.text}
+              postUserId={post.user.id}
               key={post.id}
             />
           ))}

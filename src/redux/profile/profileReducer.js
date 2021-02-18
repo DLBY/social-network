@@ -6,6 +6,9 @@ import {
   EDIT_PROFILE_REQUEST,
   EDIT_PROFILE_SUCCESS,
   EDIT_PROFILE_FAILURE,
+  GET_OTHER_PROFILE_FAILURE,
+  GET_OTHER_PROFILE_SUCCESS,
+  GET_OTHER_PROFILE_REQUEST,
 } from './profileTypes';
 
 const initialState = {
@@ -30,6 +33,27 @@ const profileReducer = (state = initialState, action) => {
         user: action.user,
       };
     case PROFILE_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        isAuthenticated: false,
+        errorMessage: action.message,
+      };
+    case GET_OTHER_PROFILE_REQUEST:
+      return {
+        ...state,
+        isFetching: true,
+        isAuthenticated: false,
+      };
+    case GET_OTHER_PROFILE_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        isAuthenticated: true,
+        errorMessage: '',
+        otherUser: action.otherUser,
+      };
+    case GET_OTHER_PROFILE_FAILURE:
       return {
         ...state,
         isFetching: false,

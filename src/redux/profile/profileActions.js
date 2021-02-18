@@ -5,6 +5,9 @@ import {
   EDIT_PROFILE_REQUEST,
   EDIT_PROFILE_SUCCESS,
   EDIT_PROFILE_FAILURE,
+  GET_OTHER_PROFILE_FAILURE,
+  GET_OTHER_PROFILE_REQUEST,
+  GET_OTHER_PROFILE_SUCCESS,
 } from './profileTypes';
 
 export const requestProfile = () => ({
@@ -37,6 +40,23 @@ export const receiveEditProfile = (response) => ({
 
 export const editProfileError = (message) => ({
   type: EDIT_PROFILE_FAILURE,
+  isFetching: false,
+  message,
+});
+
+export const requestLoadProfile = () => ({
+  type: GET_OTHER_PROFILE_REQUEST,
+  isFetching: true,
+});
+
+export const receiveLoadProfile = (response) => ({
+  type: GET_OTHER_PROFILE_SUCCESS,
+  isFetching: false,
+  otherUser: response,
+});
+
+export const loadProfileError = (message) => ({
+  type: GET_OTHER_PROFILE_FAILURE,
   isFetching: false,
   message,
 });
