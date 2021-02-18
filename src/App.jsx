@@ -12,12 +12,12 @@ import Home from './pages/Home/Home';
 import Profile from './pages/Profile/Profile';
 import { PrivateRoutes, PublicRoutes } from './Components/Routes/PrivateRoutes';
 import OtherProfile from './pages/Profile/OtherProfile';
+import RightAside from './Components/Navbar/RightAside';
 
 const App = () => (
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <Router>
-        <HorizontalNav />
         <div className="app">
           <Navbar />
           <main>

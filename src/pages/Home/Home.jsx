@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Cookies from 'js-cookie';
+import { Link } from 'react-router-dom';
 import { newPost, getAllPost } from '../../redux';
 import Post from '../../Components/Post/Post';
 
@@ -28,28 +29,26 @@ const Home = () => {
   };
   return (
     <section className="section-home">
-      <h2>
-        Welcome on My Social Network. This website is a training to Redux and
-        React. We use auth and routing to create a small social media website.
-      </h2>
-      {isAuthenticated && (
-        <form onSubmit={(e) => handleSubmitPost(e)}>
-          <input type="text" name="postContent" />
-          <button type="submit" className="btn-submit" value="Save">
-            Send
-          </button>
-        </form>
-      )}
+      <nav className="horizontal-navbar">
+        <Link to="/">Home</Link>
+      </nav>
+      <div className="form-post-container">
+        <h2>
+          Welcome on My Social Network. This website is a training to Redux and
+          React. We use auth and routing to create a small social media website.
+        </h2>
+        {isAuthenticated && (
+          <form onSubmit={(e) => handleSubmitPost(e)} className="inputPost">
+            <input type="text" name="postContent" />
+            <button type="submit" className="btn-submit" value="Save">
+              Send
+            </button>
+          </form>
+        )}
+      </div>
+      <div className="break" />
       <div className="post-container">
-        {posts &&
-          posts.map((post) => (
-            <Post
-              username={post.user.username}
-              text={post.text}
-              postUserId={post.user.id}
-              key={post.id}
-            />
-          ))}
+        {posts && posts.map((post) => <Post post={post} key={post.id} />)}
       </div>
     </section>
   );
