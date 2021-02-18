@@ -1,4 +1,4 @@
-#FULL VISIT HERE => https://social-network-gold.vercel.app/
+# Full visite here => https://social-network-gold.vercel.app/
 
 # Getting Started with Create React App
 
