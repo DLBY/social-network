@@ -22,7 +22,6 @@ const OtherProfile = () => {
     <section className="section-otherprofil">
       <div className="profile-top">
         <h1>
-          {' '}
           {otherUser
             ? otherUser.username || 'No username...'
             : 'Not username...'}
