@@ -12,7 +12,7 @@ const OtherProfile = () => {
   const token = Cookies.get('id_token');
   const otherUser = useSelector((state) => state.profile.otherUser);
   const otherUserPosts = useSelector((state) => state.post.otherUserPosts);
-  const { username, description, id } = otherUser;
+  // const { username, description, id } = otherUser;
 
   useEffect(() => {
     dispatch(loadProfile(token, userId));
@@ -21,9 +21,18 @@ const OtherProfile = () => {
   return (
     <section className="section-otherprofil">
       <div className="profile-top">
-        <h1> {username}&apos;s profile</h1>
-        <h4>Username :{username}</h4>
-        <h4>Description :{description}</h4>
+        <h1> {otherUser.username}&apos;s profile</h1>
+        <h4>
+          {' '}
+          {otherUser
+            ? otherUser.username || 'No username...'
+            : 'Not username...'}
+        </h4>
+        <h4>
+          {otherUser
+            ? otherUser.description || 'No description...'
+            : 'No description...'}
+        </h4>
       </div>
       <hr />
       {otherUserPosts &&
