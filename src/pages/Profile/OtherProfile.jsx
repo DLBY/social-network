@@ -21,9 +21,14 @@ const OtherProfile = () => {
   return (
     <section className="section-otherprofil">
       <div className="profile-top">
-        <h1> {otherUser.username}&apos;s profile</h1>
-        <h4>
+        <h1>
           {' '}
+          {otherUser
+            ? otherUser.username || 'No username...'
+            : 'Not username...'}
+          &apos;s profile
+        </h1>
+        <h4>
           {otherUser
             ? otherUser.username || 'No username...'
             : 'Not username...'}
