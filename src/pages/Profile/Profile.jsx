@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
-import { editProfile, getUserPost } from '../../redux';
+import { editProfile, getUserPost, delPost } from '../../redux';
 import OtherPost from '../../Components/Post/OtherPost';
 
 const Profile = () => {
@@ -28,6 +28,13 @@ const Profile = () => {
     dispatch(editProfile(user));
     setEditForm(!editForm);
   };
+
+  const handleDelPost = (e, postId) => {
+    e.preventDefault();
+    dispatch(delPost(token, postId));
+    console.log('test del');
+  };
+
   return (
     <div className="profile-section">
       <div className="section-top">
@@ -65,13 +72,20 @@ const Profile = () => {
       <div className="break" />
       {userPosts &&
         userPosts.map((post) => (
-          <>
+          <div>
             <OtherPost
               create={post.created_at}
               text={post.text}
               key={post.id}
             />
-          </>
+            <button
+              type="button"
+              className="btn-send"
+              onClick={(e) => handleDelPost(e, post.id)}
+            >
+              Delete
+            </button>
+          </div>
         ))}
     </div>
   );

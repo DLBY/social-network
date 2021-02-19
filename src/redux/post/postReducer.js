@@ -8,6 +8,9 @@ import {
   GET_USER_POST_FAILURE,
   GET_USER_POST_SUCCESS,
   GET_USER_POST_REQUEST,
+  DEL_POST_REQUEST,
+  DEL_POST_FAILURE,
+  DEL_POST_SUCCESS,
 } from './postTypes';
 
 const initialState = {
@@ -72,6 +75,28 @@ const postReducer = (state = initialState, action) => {
         isFetching: false,
         isAuthenticated: false,
         errorMessage: action.message,
+      };
+    case DEL_POST_REQUEST:
+      return {
+        ...state,
+        isFetching: true,
+        postDel: undefined,
+      };
+
+    case DEL_POST_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: '',
+        postDel: action.postDel,
+      };
+
+    case DEL_POST_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.message,
+        postDel: undefined,
       };
     default:
       return state;

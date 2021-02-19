@@ -198,8 +198,12 @@ body {
   padding-right: 1em;
   padding-left: 1em;
   }
-}
-
+}.btn-send {
+  @extend .btn;
+  min-height: 39px;
+  padding-right: 1em;
+  padding-left: 1em;
+  }
 // PROFILE
 h2 {
   margin:0;

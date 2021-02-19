@@ -8,6 +8,9 @@ import {
   GET_USER_POST_FAILURE,
   GET_USER_POST_SUCCESS,
   GET_USER_POST_REQUEST,
+  DEL_POST_REQUEST,
+  DEL_POST_SUCCESS,
+  DEL_POST_FAILURE,
 } from './postTypes';
 
 export const requestNewPost = () => ({
@@ -57,6 +60,23 @@ export const receiveGetUserPost = (response) => ({
 
 export const getUserPostError = (message) => ({
   type: GET_USER_POST_FAILURE,
+  isFetching: false,
+  message,
+});
+
+export const requestDelPost = () => ({
+  type: DEL_POST_REQUEST,
+  isFetching: true,
+});
+
+export const receiveDelPost = (response) => ({
+  type: DEL_POST_SUCCESS,
+  isFetching: false,
+  postDel: response,
+});
+
+export const delPostError = (message) => ({
+  type: DEL_POST_FAILURE,
   isFetching: false,
   message,
 });
