@@ -28,7 +28,12 @@ const OtherProfile = () => {
       <hr />
       {otherUserPosts &&
         otherUserPosts.map((post) => (
-          <OtherPost create={post.created_at} text={post.text} />
+          <OtherPost
+            create={post.created_at}
+            text={post.text}
+            like={post.like}
+            key={post.id}
+          />
         ))}
     </section>
   );

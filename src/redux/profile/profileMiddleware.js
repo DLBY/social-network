@@ -51,10 +51,7 @@ export const editProfile = (user) => (dispatch) => {
   };
 
   dispatch(requestEditProfile);
-  fetch(
-    `https://thp-strapi-social-network.herokuapp.com/users/${user.id}`,
-    config
-  )
+  fetch(`https://thp-strapi-social-network.herokuapp.com/users/me`, config)
     .then((response) => response.json())
     .then((response) => {
       if (response.statusCode) {
